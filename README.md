@@ -1,0 +1,1 @@
+#ELGEMO is an anonymous group chat website that lets you chat with anyone in the world. 

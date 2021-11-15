@@ -1,0 +1,133 @@
+<link rel="stylesheet" href="https://unpkg.com/blocks.css/dist/blocks.min.css" />
+
+<link rel="icon" href="https://i.pinimg.com/236x/65/8d/c0/658dc0cd9e885b9668cf72c9ad68d703.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+<meta http-equiv="refresh" content="10">
+
+<h1>ELGEMO</h1>
+<h3>Anonymous Group Chats</h3>
+
+<style>
+ h1 {
+      color: red;
+      text-align: center;
+ }
+
+
+
+</style>
+
+
+
+<li> 
+  {% for todo_item in all_items %}
+    <li>{{ todo_item.content }}
+    <form action="/deleteTodo/{{todo_item.id}}/" 
+    style="display: inline;"
+    method="post">{% csrf_token %}
+    <input id="Delete" placeholder="Type Message" type="submit" value="Delete message"/>
+    </form>
+    </li>
+  {% endfor %}
+</li>
+
+
+<form id = "chat-box" action="/addTodo/" method="post">{% csrf_token %}
+  <input id="texts" placeholder="Type Message" type="text" name="content"/>
+  <input id = "post" type="submit" value="Post"/>
+</form>
+
+
+
+
+<p><span id="datetime"></span></p>
+
+<script>
+var dt = new Date();
+document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+</script>
+
+
+
+
+
+
+
+<style>
+
+*{
+  font-family: 'Orbitron', sans-serif;
+  background-color: #14171A;
+}
+h3{
+  color: #E1E8ED;
+  text-align: center;
+}
+input{
+    border-radius: 50px;
+     background-color: #F5F8FA;
+
+  }
+
+  #chat-box{
+    margin-top: 30px;
+    margin-left: 5px;
+  }
+
+  #post{
+    margin-left: 5px;
+  }
+  li{
+    color: #1DA1F2;
+    padding: 5px;
+  }
+ 
+ #Delete{
+   margin-left: 15px;
+ }
+
+ #datetime{
+   color: #E1E8ED;
+   margin-left: 40%;
+   margin-top: 50px;
+   font-size: 35px;
+ }
+
+@media only screen   
+and (min-device-width : 360px)   
+and (max-device-width : 640px) 
+{
+  *{
+    font-size: 4vw;
+    margin: 4px;
+  }
+  h1{
+    font-size: 10vw;
+    margin-bottom: 20px; 
+  }
+  li{
+    font-size: 1.7vh;
+  }
+  #Delete{
+    height: 3vh;
+    width: 33vw;
+    font-size: 1.5vh;
+    margin-left: 50px;
+  }
+  h3{
+    margin: 30px;
+  }
+  #chatbox{
+    margin-top: 50px;
+    margin-left: 30px;
+  }
+  #texts{
+    margin-top: 50px;
+    margin-left: 30px;
+  }
+}
+
+
+</style>
